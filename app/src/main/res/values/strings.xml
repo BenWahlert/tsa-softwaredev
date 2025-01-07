@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">tsa-softwaredev</string>
+    <!-- Diet options for the Spinner -->
+    <string-array name="diet_options">
+        <item>Vegan</item>
+        <item>Omnivore</item>
+    </string-array>
+
+    <!-- Transport options for the Spinner -->
+    <string-array name="transport_options">
+        <item>Car</item>
+        <item>Bus</item>
+        <item>Bike</item>
+        <item>Walk</item>
+    </string-array>
 </resources>
