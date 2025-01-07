@@ -1,24 +1,32 @@
-<!-- activity_main.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:id="@+id/main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editTextDiet"
-        android:hint="Enter your diet (e.g., vegan, omnivore)"
+    <!-- Diet Dropdown (Spinner) -->
+    <Spinner
+        android:id="@+id/spinnerDiet"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
+    <!-- Distance for Transport -->
     <EditText
-        android:id="@+id/editTextTransport"
-        android:hint="Enter transport (e.g., car, bus)"
+        android:id="@+id/editTextDistance"
+        android:hint="Enter distance traveled (in km)"
+        android:inputType="numberDecimal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
+    <!-- Transport Dropdown (Spinner) -->
+    <Spinner
+        android:id="@+id/spinnerTransport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Calculate Button -->
     <Button
         android:id="@+id/buttonCalculate"
         android:text="Calculate Carbon Footprint"
