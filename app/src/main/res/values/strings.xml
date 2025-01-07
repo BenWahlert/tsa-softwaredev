@@ -1,4 +1,7 @@
 <resources>
+    <!-- App name -->
+    <string name="app_name">Carbon Footprint App</string>
+
     <!-- Diet options for the Spinner -->
     <string-array name="diet_options">
         <item>Vegan</item>
