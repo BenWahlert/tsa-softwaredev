@@ -12,6 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!-- Calories consumed input for the specific diet -->
+    <EditText
+        android:id="@+id/editTextCalories"
+        android:hint="Enter calories consumed (kcal)"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <!-- Distance for Transport -->
     <EditText
         android:id="@+id/editTextDistance"
