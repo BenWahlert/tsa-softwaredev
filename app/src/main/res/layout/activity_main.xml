@@ -15,26 +15,27 @@
     <!-- Calories consumed input for the specific diet -->
     <EditText
         android:id="@+id/editTextCalories"
-        android:hint="Enter calories consumed (kcal)"
+        android:hint="Enter calories consumed per day"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <!-- Distance for Transport -->
-    <EditText
-        android:id="@+id/editTextDistance"
-        android:hint="Enter distance traveled (in km)"
-        android:inputType="numberDecimal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <!-- Transport Dropdown (Spinner) -->
     <Spinner
         android:id="@+id/spinnerTransport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
     <!-- Calculate Button -->
+    <EditText
+        android:id="@+id/editTextDistance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter distance traveled (in km) per day"
+        android:inputType="numberDecimal" />
+
+
     <Button
         android:id="@+id/buttonCalculate"
         android:text="Calculate Carbon Footprint"

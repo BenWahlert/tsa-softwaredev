@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
         String distanceText = editTextDistance.getText().toString();
         String caloriesText = editTextCalories.getText().toString();
 
+        if (diet.equals("select diet")) {
+            Toast.makeText(this, "Please select a diet", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (transport.equals("select transport")) {
+            Toast.makeText(this, "Please select a transport method", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Check if the distance or calories fields are empty
         if (distanceText.isEmpty() || caloriesText.isEmpty()) {
             if (distanceText.isEmpty()) {
@@ -67,14 +78,18 @@ public class MainActivity extends AppCompatActivity {
         double carbonFootprint = 0.0;
 
         // Estimate carbon footprint based on diet (average carbon cost per calorie)
-        double dietCarbonFactor = 0.0;  // Default value
+
         if (diet.equals("vegan")) {
-            dietCarbonFactor = 0.002;  // Example: 0.002 kg CO2 per kcal
-        } else if (diet.equals("omnivore")) {
-            dietCarbonFactor = 0.004;  // Example: 0.004 kg CO2 per kcal
+            carbonFootprint += 1.63293;
+        } else if (diet.equals("mediterranean")) {
+            carbonFootprint += 2.17724;
+        } else if (diet.equals("paleo")) {
+            carbonFootprint += .00196556666 * calories;
+        } else if (diet.equals("keto")) {
+            carbonFootprint += 0.00316528586 * calories;
+        } else if (diet.equals("standard american")) {
+            carbonFootprint += 0.00234684782 * calories;
         }
-        // Add carbon footprint from diet based on calories
-        carbonFootprint += calories * dietCarbonFactor;
 
         // Estimate carbon footprint based on transport method and distance
         if (transport.equals("car")) {
@@ -88,6 +103,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Display the result in the TextView
-        textViewResult.setText("Estimated Carbon Footprint: " + carbonFootprint + " kg CO2");
+        textViewResult.setText("Estimated Carbon Footprint: " + carbonFootprint + " kg CO2/day");
     }
 }

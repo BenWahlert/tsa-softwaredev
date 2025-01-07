@@ -4,12 +4,17 @@
 
     <!-- Diet options for the Spinner -->
     <string-array name="diet_options">
+        <item>Select Diet</item>
+        <item>Standard American</item>
+        <item>Mediterranean</item>
         <item>Vegan</item>
-        <item>Omnivore</item>
+        <item>Paleo</item>
+        <item>Keto</item>
     </string-array>
 
     <!-- Transport options for the Spinner -->
     <string-array name="transport_options">
+        <item>Select Transport</item>
         <item>Car</item>
         <item>Bus</item>
         <item>Bike</item>
