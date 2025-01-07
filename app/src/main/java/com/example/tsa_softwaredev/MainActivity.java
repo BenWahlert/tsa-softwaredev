@@ -1,11 +1,11 @@
 package com.example.tsa_softwaredev;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.ArrayAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,37 +14,48 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinnerDiet, spinnerTransport;
     private EditText editTextDistance;
     private Button buttonCalculate;
+    private TextView textViewResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize views
         spinnerDiet = findViewById(R.id.spinnerDiet);
         spinnerTransport = findViewById(R.id.spinnerTransport);
         editTextDistance = findViewById(R.id.editTextDistance);
         buttonCalculate = findViewById(R.id.buttonCalculate);
+        textViewResult = findViewById(R.id.textViewResult);
 
-        // Setup the diet spinner
+        // Set up diet spinner
         ArrayAdapter<CharSequence> dietAdapter = ArrayAdapter.createFromResource(this, 
                 R.array.diet_options, android.R.layout.simple_spinner_item);
         dietAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDiet.setAdapter(dietAdapter);
 
-        // Setup the transport spinner
+        // Set up transport spinner
         ArrayAdapter<CharSequence> transportAdapter = ArrayAdapter.createFromResource(this, 
                 R.array.transport_options, android.R.layout.simple_spinner_item);
         transportAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTransport.setAdapter(transportAdapter);
 
+        // Set up button click listener
         buttonCalculate.setOnClickListener(v -> calculateCarbonFootprint());
     }
 
     private void calculateCarbonFootprint() {
         String diet = spinnerDiet.getSelectedItem().toString().toLowerCase();
         String transport = spinnerTransport.getSelectedItem().toString().toLowerCase();
-        double distance = Double.parseDouble(editTextDistance.getText().toString());
+        String distanceText = editTextDistance.getText().toString();
 
+        // Check if the distance field is empty
+        if (distanceText.isEmpty()) {
+            editTextDistance.setError("Please enter a valid distance.");
+            return; // Exit the method if no distance is entered
+        }
+
+        double distance = Double.parseDouble(distanceText);
         double carbonFootprint = 0.0;
 
         // Estimate carbon footprint based on diet
@@ -59,9 +70,13 @@ public class MainActivity extends AppCompatActivity {
             carbonFootprint += (distance * 0.2); // Example: 0.2 kg CO2 per km
         } else if (transport.equals("bus")) {
             carbonFootprint += (distance * 0.05); // Example: 0.05 kg CO2 per km
+        } else if (transport.equals("bike")) {
+            carbonFootprint += (distance * 0.01); // Example: 0.01 kg CO2 per km
+        } else if (transport.equals("walk")) {
+            carbonFootprint += (distance * 0.0); // Walking has no carbon footprint
         }
 
-        // Display results (you can create a TextView for this)
-        System.out.println("Estimated Carbon Footprint: " + carbonFootprint + " tons/year");
+        // Display the result in the TextView
+        textViewResult.setText("Estimated Carbon Footprint: " + carbonFootprint + " tons/year");
     }
 }
