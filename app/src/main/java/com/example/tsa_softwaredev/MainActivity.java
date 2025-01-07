@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private Spinner spinnerDiet, spinnerTransport;
-    private EditText editTextDistance;
+    private EditText editTextDistance, editTextCalories;
     private Button buttonCalculate;
     private TextView textViewResult;
 
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerDiet = findViewById(R.id.spinnerDiet);
         spinnerTransport = findViewById(R.id.spinnerTransport);
         editTextDistance = findViewById(R.id.editTextDistance);
+        editTextCalories = findViewById(R.id.editTextCalories);
         buttonCalculate = findViewById(R.id.buttonCalculate);
         textViewResult = findViewById(R.id.textViewResult);
 
@@ -48,22 +49,32 @@ public class MainActivity extends AppCompatActivity {
         String diet = spinnerDiet.getSelectedItem().toString().toLowerCase();
         String transport = spinnerTransport.getSelectedItem().toString().toLowerCase();
         String distanceText = editTextDistance.getText().toString();
+        String caloriesText = editTextCalories.getText().toString();
 
-        // Check if the distance field is empty
-        if (distanceText.isEmpty()) {
-            editTextDistance.setError("Please enter a valid distance.");
-            return; // Exit the method if no distance is entered
+        // Check if the distance or calories fields are empty
+        if (distanceText.isEmpty() || caloriesText.isEmpty()) {
+            if (distanceText.isEmpty()) {
+                editTextDistance.setError("Please enter a valid distance.");
+            }
+            if (caloriesText.isEmpty()) {
+                editTextCalories.setError("Please enter calories consumed.");
+            }
+            return; // Exit the method if any field is empty
         }
 
         double distance = Double.parseDouble(distanceText);
+        double calories = Double.parseDouble(caloriesText);
         double carbonFootprint = 0.0;
 
-        // Estimate carbon footprint based on diet
+        // Estimate carbon footprint based on diet (average carbon cost per calorie)
+        double dietCarbonFactor = 0.0;  // Default value
         if (diet.equals("vegan")) {
-            carbonFootprint += 1.5;
+            dietCarbonFactor = 0.002;  // Example: 0.002 kg CO2 per kcal
         } else if (diet.equals("omnivore")) {
-            carbonFootprint += 3.0;
+            dietCarbonFactor = 0.004;  // Example: 0.004 kg CO2 per kcal
         }
+        // Add carbon footprint from diet based on calories
+        carbonFootprint += calories * dietCarbonFactor;
 
         // Estimate carbon footprint based on transport method and distance
         if (transport.equals("car")) {
@@ -77,6 +88,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Display the result in the TextView
-        textViewResult.setText("Estimated Carbon Footprint: " + carbonFootprint + " tons/year");
+        textViewResult.setText("Estimated Carbon Footprint: " + carbonFootprint + " kg CO2");
     }
 }
