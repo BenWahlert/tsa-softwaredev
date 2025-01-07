@@ -32,4 +32,13 @@
         android:text="Calculate Carbon Footprint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <!-- TextView to display the result -->
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Carbon Footprint Result"
+        android:textSize="18sp"/>
+
 </LinearLayout>
