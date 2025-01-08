@@ -1,53 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- Diet Dropdown (Spinner) -->
-    <Spinner
-        android:id="@+id/spinnerDiet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!-- Calories consumed input for the specific diet -->
-    <EditText
-        android:id="@+id/editTextCalories"
-        android:hint="Enter calories consumed per day"
-        android:inputType="number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!-- Distance for Transport -->
-
-    <!-- Transport Dropdown (Spinner) -->
-    <Spinner
-        android:id="@+id/spinnerTransport"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <!-- Calculate Button -->
-    <EditText
-        android:id="@+id/editTextDistance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter distance traveled (in km) per day"
-        android:inputType="numberDecimal" />
-
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
 
     <Button
-        android:id="@+id/buttonCalculate"
-        android:text="Calculate Carbon Footprint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <!-- TextView to display the result -->
-    <TextView
-        android:id="@+id/textViewResult"
-        android:layout_width="match_parent"
+        android:id="@+id/buttonAddActivity"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carbon Footprint Result"
-        android:textSize="18sp"/>
-
+        android:text="Add Activity" />
 </LinearLayout>
