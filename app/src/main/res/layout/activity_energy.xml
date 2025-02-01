@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tv_energy_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Energy Usage Tracker"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Input for Electricity Usage (kWh) -->
+    <EditText
+        android:id="@+id/et_electricity_usage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter electricity usage (kWh)"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Input for Gas Usage (cubic meters) -->
+    <EditText
+        android:id="@+id/et_gas_usage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter gas usage (cubic meters)"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Button to Save Energy Data -->
+    <Button
+        android:id="@+id/btn_save_energy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Energy Usage"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>

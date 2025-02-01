@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tv_transportation_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transportation Tracker"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Input for Destination -->
+    <EditText
+        android:id="@+id/et_destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Destination"
+        android:inputType="text" />
+
+    <!-- Input for Mode of Transport -->
+    <Spinner
+        android:id="@+id/spinner_transport_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/transport_modes" />
+
+    <!-- Button to Start Tracking -->
+    <Button
+        android:id="@+id/btn_start_tracking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Tracking" />
+
+    <!-- List of Tracked Trips -->
+    <ListView
+        android:id="@+id/lv_trips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
+
+</LinearLayout>

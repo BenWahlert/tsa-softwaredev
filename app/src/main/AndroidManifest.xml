@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tsa_softwaredev">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:label="@string/app_name"
@@ -8,8 +7,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App"> <!-- Ensure this theme exists in styles.xml -->
 
-        <activity
-            android:name=".MainActivity"
+        <activity android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,6 +15,17 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".HomeActivity" />
+
+        <!--     <activity android:name=".MainActivity" /> -->
+        <activity android:name=".TransportationActivity" />
+        <activity android:name=".EnergyActivity" />
+        <activity android:name=".MainActivity">
+            <!-- Optionally, add intent filters if needed -->
+        </activity>
+
+
+
     </application>
 
-</manifest>
+     </manifest>

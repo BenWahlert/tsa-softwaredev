@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center">
+
+        <!-- Welcome Message -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Track your carbon footprint and discover simple ways to reduce your impact on the planet—all offline and privately stored on your device."
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- How It Works Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🚀 How it Works:\n\n1️⃣ Enter your daily activities (transportation, energy use, diet, etc.).\n2️⃣ See an estimate of your carbon footprint.\n3️⃣ Get personalized tips to lower emissions.\n4️⃣ Set goals and track your progress over time.\n\nYour data stays completely private—no internet connection needed."
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:paddingBottom="24dp"
+            android:textColor="@color/black" />
+
+        <!-- Get Started Button -->
+        <Button
+            android:id="@+id/btn_continue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let’s get started! 🌱"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

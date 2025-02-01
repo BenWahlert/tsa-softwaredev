@@ -1,9 +1,24 @@
 <resources>
-    <string name="app_name">Carbon Footprint Tracker</string>
+    <string name="app_name">0TSA App</string>
     <string-array name="activity_options">
         <item>Select Activity</item>
         <item>Bike</item>
         <item>Drive</item>
         <item>Walk</item>
     </string-array>
+    <string-array name="diet_types">
+        <item>Omnivore</item>
+        <item>Vegetarian</item>
+        <item>Vegan</item>
+        <item>Pescatarian</item>
+        <item>Keto</item>
+    </string-array>
+    <string-array name="transport_modes">
+        <item>Car</item>
+        <item>Bus</item>
+        <item>Train</item>
+        <item>Bicycle</item>
+        <item>Walking</item>
+    </string-array>
+
 </resources>

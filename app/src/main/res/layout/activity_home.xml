@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center">
+
+        <!-- App Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carbon Footprint Tracker"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Track Transportation Button -->
+        <Button
+            android:id="@+id/btn_track_transportation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🚗 Track Transportation"
+            android:backgroundTint="@color/blue"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Track Energy Usage Button -->
+        <Button
+            android:id="@+id/btn_track_energy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚡ Track Energy Usage"
+            android:backgroundTint="@color/orange"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Diet Type Selection -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Your Diet Type:"
+            android:textSize="18sp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/black"/>
+
+        <Spinner
+            android:id="@+id/spinner_diet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@android:drawable/editbox_background"/>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Preferences"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>
