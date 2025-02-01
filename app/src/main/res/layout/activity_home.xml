@@ -12,7 +12,29 @@
         android:padding="24dp"
         android:gravity="center">
 
+        <!-- Total Carbon Emissions Display -->
+
+        <!-- Average Carbon Emissions per Day Display -->
+
+        <TextView
+            android:id="@+id/tv_total_emissions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="Total Carbon Emissions: 0 kg"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
         <!-- App Title -->
+        <TextView
+            android:id="@+id/tv_average_emissions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:text="Average Carbon Emissions/Day: 0 kg"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

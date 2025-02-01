@@ -16,29 +16,27 @@
         android:textStyle="bold"
         android:layout_gravity="center_horizontal" />
 
-    <!-- Input for Electricity Usage (kWh) -->
-    <EditText
-        android:id="@+id/et_electricity_usage"
+    <!-- Spinner for selecting energy source -->
+    <Spinner
+        android:id="@+id/spinner_energy_source"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter electricity usage (kWh)"
+        android:layout_marginTop="16dp" />
+
+    <!-- Input for energy usage (kWh for electricity, cubic meters for gas, etc.) -->
+    <EditText
+        android:id="@+id/et_energy_usage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter energy usage"
         android:inputType="numberDecimal"
         android:layout_marginTop="16dp"/>
 
-    <!-- Input for Gas Usage (cubic meters) -->
-    <EditText
-        android:id="@+id/et_gas_usage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter gas usage (cubic meters)"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="8dp"/>
-
-    <!-- Button to Save Energy Data -->
+    <!-- Button to save energy data -->
     <Button
-        android:id="@+id/btn_save_energy"
+        android:id="@+id/btn_start_energy_tracking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Energy Usage"
+        android:text="Track Energy Emissions"
         android:layout_marginTop="16dp"/>
 </LinearLayout>

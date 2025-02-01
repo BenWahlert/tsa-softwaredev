@@ -16,19 +16,21 @@
         android:textStyle="bold"
         android:layout_gravity="center_horizontal" />
 
-    <!-- Input for Destination -->
+    <!-- Input for Distance Traveled -->
     <EditText
-        android:id="@+id/et_destination"
+        android:id="@+id/et_distance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Destination"
-        android:inputType="text" />
+        android:hint="Enter distance traveled (km)"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="16dp" />
 
     <!-- Input for Mode of Transport -->
     <Spinner
         android:id="@+id/spinner_transport_mode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:entries="@array/transport_modes" />
 
     <!-- Button to Start Tracking -->
@@ -36,7 +38,8 @@
         android:id="@+id/btn_start_tracking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start Tracking" />
+        android:text="Track Travel"
+        android:layout_marginTop="16dp" />
 
     <!-- List of Tracked Trips -->
     <ListView
@@ -44,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp" />
+        android:dividerHeight="1dp"
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>

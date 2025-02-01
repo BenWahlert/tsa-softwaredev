@@ -1,6 +1,5 @@
 package com.example.tsa_softwaredev;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -8,13 +7,29 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
+
     private Spinner dietSpinner;
     private SharedPreferences prefs;
+
+    private float totalEmissions = 0;  // In kg
+    private int daysTracked = 1;  // Assuming at least 1 day of tracking
+
+    private TextView totalEmissionsTextView;
+    private TextView averageEmissionsTextView;
+
+    // Diet type emissions mapping (kg/day)
+    private final float standardAmericanEmissions = 5.39775f;
+    private final float mediterraneanEmissions = 2.17724f;
+    private final float veganEmissions = 1.63293f;
+    private final float paleoEmissions = 4.513245f;
+    private final float ketoEmissions = 7.2801575f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +45,10 @@ public class HomeActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.btn_save);
         dietSpinner = findViewById(R.id.spinner_diet);
 
+        // Find the TextViews for emissions
+        totalEmissionsTextView = findViewById(R.id.tv_total_emissions);
+        averageEmissionsTextView = findViewById(R.id.tv_average_emissions);
+
         // Set up Diet Spinner (Dropdown)
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.diet_types, android.R.layout.simple_spinner_item);
@@ -37,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
         dietSpinner.setAdapter(adapter);
 
         // Load saved diet preference
-        String savedDiet = prefs.getString("diet_type", "Omnivore");
+        String savedDiet = prefs.getString("diet_type", "Standard American");
         int spinnerPosition = adapter.getPosition(savedDiet);
         dietSpinner.setSelection(spinnerPosition);
 
@@ -50,6 +69,9 @@ public class HomeActivity extends AppCompatActivity {
                 editor.putString("diet_type", selectedDiet);
                 editor.apply();
                 Toast.makeText(HomeActivity.this, "Diet saved: " + selectedDiet, Toast.LENGTH_SHORT).show();
+
+                // Update emissions based on selected diet
+                updateEmissionsBasedOnDiet(selectedDiet);
             }
 
             @Override
@@ -68,5 +90,72 @@ public class HomeActivity extends AppCompatActivity {
         saveButton.setOnClickListener(v -> {
             Toast.makeText(HomeActivity.this, "Preferences Saved!", Toast.LENGTH_SHORT).show();
         });
+
+        // Retrieve and update the total emissions from SharedPreferences
+        updateEmissionsData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Update emissions data every time the HomeActivity is accessed
+        updateEmissionsData();
+    }
+    private void addEnergyEmissions() {
+        // Retrieve the stored energy emissions from SharedPreferences
+        float energyEmissions = prefs.getFloat("energyEmissions", 0);
+        totalEmissions += energyEmissions;  // Add the retrieved energy emissions to total emissions
+    }
+
+    // Method to update emissions based on selected diet
+    private void updateEmissionsBasedOnDiet(String diet) {
+        switch (diet) {
+            case "Standard American":
+                totalEmissions = standardAmericanEmissions;
+                break;
+            case "Mediterranean":
+                totalEmissions = mediterraneanEmissions;
+                break;
+            case "Vegan":
+                totalEmissions = veganEmissions;
+                break;
+            case "Paleo":
+                totalEmissions = paleoEmissions;
+                break;
+            case "Keto":
+                totalEmissions = ketoEmissions;
+                break;
+            default:
+                totalEmissions = 0;
+                break;
+        }
+
+        // Add transportation emissions from SharedPreferences
+        addTransportationEmissions();
+
+        // Update the emissions data
+        updateEmissionsData();
+    }
+
+    // Method to add transportation emissions from SharedPreferences
+    private void addTransportationEmissions() {
+        float transportEmissions = prefs.getFloat("transportationEmissions", 0);
+        totalEmissions += transportEmissions;
+    }
+
+    // Method to update emissions data
+    private void updateEmissionsData() {
+        // Add energy emissions from SharedPreferences
+        addEnergyEmissions();
+
+        // Add transportation emissions from SharedPreferences
+        addTransportationEmissions();
+
+        // Calculate average emissions per day
+        float averageEmissions = totalEmissions / daysTracked;
+
+        // Update the TextViews with the current data
+        totalEmissionsTextView.setText("Total Carbon Emissions: " + totalEmissions + " kg");
+        averageEmissionsTextView.setText("Average Carbon Emissions/Day: " + averageEmissions + " kg");
     }
 }

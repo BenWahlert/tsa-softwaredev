@@ -21,7 +21,6 @@
         <activity android:name=".TransportationActivity" />
         <activity android:name=".EnergyActivity" />
         <activity android:name=".MainActivity">
-            <!-- Optionally, add intent filters if needed -->
         </activity>
 
 
