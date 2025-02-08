@@ -2,6 +2,8 @@ package com.example.tsa_softwaredev;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -11,13 +13,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Call the home method when the activity is created
-        home();
+        // Find the button by its ID
+        Button homeButton = findViewById(R.id.home_button);
+        Button tipsButton = findViewById(R.id.tips_button);
+
+        // Set an OnClickListener to handle button clicks
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                home();
+            }
+        });
+
+        tipsButton.setOnClickListener(new View.OnClickListener()  {
+            @Override
+            public void onClick(View v) {
+                tips();
+            }
+        });
     }
 
     public void home() {
-        // Start HomeActivity and finish the current activity
         startActivity(new Intent(MainActivity.this, HomeActivity.class));
-        finish();
+    }
+
+    public void tips() {
+        startActivity(new Intent(MainActivity.this, TipsActivity.class));
     }
 }
