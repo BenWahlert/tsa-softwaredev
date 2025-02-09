@@ -22,6 +22,7 @@
         <activity android:name=".EnergyActivity" />
         <activity android:name=".MainActivity"/>
         <activity android:name=".TipsActivity"/>
+        <activity android:name=".IntroActivity"/>
 
 
 
