@@ -1,12 +1,18 @@
 package com.example.tsa_softwaredev;
-
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TextView statsTextView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         // Find the button by its ID
         Button homeButton = findViewById(R.id.home_button);
         Button tipsButton = findViewById(R.id.tips_button);
+        statsTextView = findViewById(R.id.tv_stats);
 
         // Set an OnClickListener to handle button clicks
         homeButton.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +38,17 @@ public class MainActivity extends AppCompatActivity {
                 tips();
             }
         });
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        float totalEmissions = sharedPreferences.getFloat("totalEmissions", 0.0f);
+        displayEmissions(totalEmissions);
+    }
+
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        float totalEmissions = sharedPreferences.getFloat("totalEmissions", 0.0f);
+
+        displayEmissions(totalEmissions);
     }
 
     public void home() {
@@ -40,4 +58,9 @@ public class MainActivity extends AppCompatActivity {
     public void tips() {
         startActivity(new Intent(MainActivity.this, TipsActivity.class));
     }
+
+    public void displayEmissions(float emissions) {
+        statsTextView.setText("" + emissions);
+    }
+
 }

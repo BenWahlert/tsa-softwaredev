@@ -18,6 +18,7 @@ public class HomeActivity extends AppCompatActivity {
     private Spinner dietSpinner;
     private SharedPreferences prefs;
 
+
     private float totalEmissions = 0;  // In kg
     private int daysTracked = 1;  // Assuming at least 1 day of tracking
 
@@ -48,6 +49,9 @@ public class HomeActivity extends AppCompatActivity {
         // Find the TextViews for emissions
         totalEmissionsTextView = findViewById(R.id.tv_total_emissions);
         averageEmissionsTextView = findViewById(R.id.tv_average_emissions);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
         // Set up Diet Spinner (Dropdown)
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -143,19 +147,19 @@ public class HomeActivity extends AppCompatActivity {
         totalEmissions += transportEmissions;
     }
 
-    // Method to update emissions data
-    private void updateEmissionsData() {
-        // Add energy emissions from SharedPreferences
-        addEnergyEmissions();
 
-        // Add transportation emissions from SharedPreferences
+    private void updateEmissionsData() {
+        addEnergyEmissions();
         addTransportationEmissions();
 
-        // Calculate average emissions per day
         float averageEmissions = totalEmissions / daysTracked;
 
-        // Update the TextViews with the current data
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putFloat("totalEmissions", totalEmissions);
+        editor.apply();
+
         totalEmissionsTextView.setText("Total Carbon Emissions: " + totalEmissions + " kg");
         averageEmissionsTextView.setText("Average Carbon Emissions/Day: " + averageEmissions + " kg");
     }
+
 }
