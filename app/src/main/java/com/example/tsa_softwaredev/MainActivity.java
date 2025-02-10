@@ -1,4 +1,5 @@
 package com.example.tsa_softwaredev;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private TextView statsTextView;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +37,16 @@ public class MainActivity extends AppCompatActivity {
                 tips();
             }
         });
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        float totalEmissions = sharedPreferences.getFloat("totalEmissions", 0.0f);
-        displayEmissions(totalEmissions);
+
+        // Update the displayed emissions
+        updateEmissionsDisplay();
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        float totalEmissions = sharedPreferences.getFloat("totalEmissions", 0.0f);
-
-        displayEmissions(totalEmissions);
+        // Update emissions when returning to MainActivity
+        updateEmissionsDisplay();
     }
 
     public void home() {
@@ -59,8 +57,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, TipsActivity.class));
     }
 
-    public void displayEmissions(float emissions) {
-        statsTextView.setText("" + emissions);
+    public void updateEmissionsDisplay() {
+        // Retrieve emissions from SharedPreferences and update the display
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        float totalEmissions = sharedPreferences.getFloat("totalEmissions", 0.0f);
+        statsTextView.setText(totalEmissions + "");
     }
-
 }

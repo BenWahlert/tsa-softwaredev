@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">0TSA App</string>
+    <string name="app_name">CarbonPal</string>
     <string-array name="activity_options">
         <item>Select Activity</item>
         <item>Bike</item>

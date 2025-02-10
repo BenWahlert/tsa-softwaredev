@@ -1,80 +1,122 @@
 package com.example.tsa_softwaredev;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-import java.util.Random;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class TipsActivity extends AppCompatActivity {
 
-    List<String> tips = Arrays.asList(
-            "1. Switch to renewable energy sources like solar and wind.",
-            "2. Reduce, reuse, and recycle to minimize waste.",
-            "3. Use public transport, bike, or walk instead of driving.",
-            "4. Plant trees to absorb CO2 and improve air quality.",
-            "5. Consume less meat and dairy to reduce methane emissions.",
-            "6. Support and buy from sustainable businesses.",
-            "7. Turn off lights and electronics when not in use.",
-            "8. Insulate your home to reduce heating and cooling needs.",
-            "9. Use energy-efficient appliances and LED bulbs.",
-            "10. Avoid single-use plastics and opt for reusable products.",
-            "11. Collect rainwater for gardening and reduce water waste.",
-            "12. Drive fuel-efficient or electric vehicles.",
-            "13. Participate in local environmental initiatives.",
-            "14. Eat seasonal and locally produced food.",
-            "15. Unplug devices when not in use to save energy.",
-            "16. Advocate for policies that support climate action.",
-            "17. Reduce fast fashion consumption and buy sustainable clothing.",
-            "18. Support companies committed to reducing carbon emissions.",
-            "19. Use a programmable thermostat to optimize energy use.",
-            "20. Take shorter showers to conserve water.",
-            "21. Avoid food waste by planning meals and composting leftovers.",
-            "22. Carpool with others to reduce carbon emissions.",
-            "23. Reduce paper use by going digital.",
-            "24. Install solar panels to generate clean energy.",
-            "25. Use refillable water bottles instead of bottled water.",
-            "26. Participate in tree-planting initiatives.",
-            "27. Support green energy policies and investments.",
-            "28. Reduce air travel and opt for video conferencing.",
-            "29. Grow your own food to cut down on transportation emissions.",
-            "30. Buy energy from suppliers that invest in renewables.",
-            "31. Use biodegradable and non-toxic cleaning products.",
-            "32. Reduce dependency on fossil fuels by conserving energy.",
-            "33. Repair and repurpose items instead of discarding them.",
-            "34. Reduce the use of chemical fertilizers and pesticides.",
-            "35. Use hand dryers instead of paper towels.",
-            "36. Volunteer for environmental conservation projects.",
-            "37. Promote environmental education and awareness.",
-            "38. Reduce packaging waste by buying in bulk.",
-            "39. Use electric lawn mowers instead of gas-powered ones.",
-            "40. Choose eco-friendly travel and tourism options.",
-            "41. Encourage businesses to adopt sustainable practices.",
-            "42. Avoid idling your car to save fuel and reduce emissions.",
-            "43. Insulate water heaters to improve energy efficiency.",
-            "44. Reduce synthetic clothing purchases to limit microplastics.",
-            "45. Turn off air conditioning when not necessary.",
-            "46. Avoid excessive packaging by choosing sustainable brands.",
-            "47. Participate in beach and park clean-up activities.",
-            "48. Use natural light whenever possible to reduce energy use.",
-            "49. Avoid buying products with palm oil to prevent deforestation.",
-            "50. Spread awareness and encourage others to take climate action."
+    List<String> energyTips = Arrays.asList(
+            "Unplug devices when they're not in use to avoid phantom energy drain.",
+            "Switch to energy-efficient LED bulbs to save electricity.",
+            "Use power strips and turn them off when not needed.",
+            "Wash clothes in cold water and air dry them whenever possible.",
+            "Set your thermostat a few degrees lower in winter and higher in summer.",
+            "Upgrade to energy-efficient appliances to cut down on electricity use.",
+            "Turn off lights when leaving a room to reduce unnecessary power usage.",
+            "Consider installing solar panels to generate clean energy.",
+            "Use blackout curtains to naturally regulate indoor temperatures.",
+            "Limit the use of space heaters and rely on layered clothing instead."
     );
+
+    List<String> dietTips = Arrays.asList(
+            "Try reducing meat consumption—start with Meatless Mondays!",
+            "Choose locally sourced produce to cut down on transportation emissions.",
+            "Avoid food waste by planning meals and using leftovers creatively.",
+            "Eat more plant-based meals to lower your carbon footprint.",
+            "Buy in bulk and use reusable containers to reduce packaging waste.",
+            "Compost food scraps instead of sending them to landfills.",
+            "Support sustainable farming by buying organic when possible.",
+            "Grow your own herbs or vegetables to reduce transport emissions.",
+            "Drink tap water instead of bottled water to cut down on plastic waste.",
+            "Reduce dairy consumption—plant-based alternatives can be just as tasty!"
+    );
+
+    List<String> transportationTips = Arrays.asList(
+            "Walk or bike for short trips instead of driving.",
+            "Use public transportation whenever possible to reduce emissions.",
+            "Carpool with friends or coworkers to cut down on fuel use.",
+            "Switch to an electric or hybrid vehicle if you're considering a new car.",
+            "Plan errands efficiently to reduce unnecessary trips.",
+            "Drive smoothly—avoid rapid acceleration and braking to save fuel.",
+            "Keep your tires properly inflated to improve fuel efficiency.",
+            "Turn off your engine instead of idling to save gas and reduce pollution.",
+            "Consider working from home or telecommuting to cut down on travel.",
+            "Take trains instead of planes for shorter trips to lower emissions."
+    );
+
+    List<String> generalTips = Arrays.asList(
+            "Support businesses that prioritize sustainability and eco-friendly practices.",
+            "Get involved in local environmental initiatives and clean-ups.",
+            "Use reusable shopping bags, coffee cups, and utensils to cut down on waste.",
+            "Advocate for climate policies that support renewable energy.",
+            "Switch to eco-friendly cleaning products to reduce harmful chemicals.",
+            "Reduce plastic use by avoiding disposable packaging.",
+            "Repair and repurpose items instead of throwing them away.",
+            "Turn off electronics at night to conserve power.",
+            "Educate friends and family about sustainable living practices.",
+            "Take shorter showers to reduce water and energy consumption."
+    );
+
+    private TextView tipOfTheDayTextView;
+    private Button refreshButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tips);
-        Button tipsButton = findViewById(R.id.tips_button);
 
-        tipsButton.setOnClickListener(new View.OnClickListener()  {
+        tipOfTheDayTextView = findViewById(R.id.tip_of_the_day_text_view);
+        refreshButton = findViewById(R.id.refresh_button);
+
+        SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        float energyEmissions = prefs.getFloat("energyEmissions", 0);
+        float dietEmissions = prefs.getFloat("dietEmissions", 0);
+        float transportationEmissions = prefs.getFloat("transportationEmissions", 0);
+        float totalEmissions = energyEmissions + dietEmissions + transportationEmissions;
+
+        displayTipOfTheDay(energyEmissions, dietEmissions, transportationEmissions, totalEmissions);
+
+        refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TipsActivity.this, tips.get(new Random().nextInt(tips.size())), Toast.LENGTH_SHORT).show();
+                displayTipOfTheDay(energyEmissions, dietEmissions, transportationEmissions, totalEmissions);
             }
         });
     }
 
+    private void displayTipOfTheDay(float energy, float diet, float transportation, float total) {
+        String tip = getTipBasedOnEmissions(energy, diet, transportation, total);
+        tipOfTheDayTextView.setText(tip);
+    }
+
+    private String getTipBasedOnEmissions(float energy, float diet, float transportation, float total) {
+        String tipMessage = "";
+
+        if (energy > 10) {
+            tipMessage = "Your energy usage is on the higher side. " + getRandomTip(energyTips);
+        } else if (diet > 10) {
+            tipMessage = "Your diet contributes a bit more to emissions. " + getRandomTip(dietTips);
+        } else if (transportation > 10) {
+            tipMessage = "Your transportation footprint is significant. " + getRandomTip(transportationTips);
+        } else if (total > 30) {
+            tipMessage = "Your overall emissions could be lower. " + getRandomTip(generalTips);
+        } else {
+            tipMessage = "You're doing great at reducing your carbon footprint! Keep up the good work.";
+        }
+
+        return tipMessage;
+    }
+
+    private String getRandomTip(List<String> tipList) {
+        return tipList.get(new Random().nextInt(tipList.size()));
+    }
 }

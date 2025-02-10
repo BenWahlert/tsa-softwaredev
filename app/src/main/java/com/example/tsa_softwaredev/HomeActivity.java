@@ -18,7 +18,6 @@ public class HomeActivity extends AppCompatActivity {
     private Spinner dietSpinner;
     private SharedPreferences prefs;
 
-
     private float totalEmissions = 0;  // In kg
     private int daysTracked = 1;  // Assuming at least 1 day of tracking
 
@@ -46,9 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.btn_save);
         dietSpinner = findViewById(R.id.spinner_diet);
 
-        // Find the TextViews for emissions
-        totalEmissionsTextView = findViewById(R.id.tv_total_emissions);
-        averageEmissionsTextView = findViewById(R.id.tv_average_emissions);
+
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -105,10 +102,16 @@ public class HomeActivity extends AppCompatActivity {
         // Update emissions data every time the HomeActivity is accessed
         updateEmissionsData();
     }
+
     private void addEnergyEmissions() {
         // Retrieve the stored energy emissions from SharedPreferences
         float energyEmissions = prefs.getFloat("energyEmissions", 0);
         totalEmissions += energyEmissions;  // Add the retrieved energy emissions to total emissions
+
+        // Save energy emissions in SharedPreferences
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putFloat("energyEmissions", energyEmissions);
+        editor.apply();
     }
 
     // Method to update emissions based on selected diet
@@ -145,12 +148,48 @@ public class HomeActivity extends AppCompatActivity {
     private void addTransportationEmissions() {
         float transportEmissions = prefs.getFloat("transportationEmissions", 0);
         totalEmissions += transportEmissions;
+
+        // Save transportation emissions in SharedPreferences
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putFloat("transportationEmissions", transportEmissions);
+        editor.apply();
     }
 
+    // Method to add diet emissions from SharedPreferences
+    private void addDietEmissions() {
+        String dietType = prefs.getString("diet_type", "Standard American");
+
+        float dietEmissions = 0;
+        switch (dietType) {
+            case "Standard American":
+                dietEmissions = standardAmericanEmissions;
+                break;
+            case "Mediterranean":
+                dietEmissions = mediterraneanEmissions;
+                break;
+            case "Vegan":
+                dietEmissions = veganEmissions;
+                break;
+            case "Paleo":
+                dietEmissions = paleoEmissions;
+                break;
+            case "Keto":
+                dietEmissions = ketoEmissions;
+                break;
+        }
+
+        totalEmissions += dietEmissions;
+
+        // Save diet emissions in SharedPreferences
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putFloat("dietEmissions", dietEmissions);
+        editor.apply();
+    }
 
     private void updateEmissionsData() {
         addEnergyEmissions();
         addTransportationEmissions();
+        addDietEmissions();
 
         float averageEmissions = totalEmissions / daysTracked;
 
@@ -158,8 +197,5 @@ public class HomeActivity extends AppCompatActivity {
         editor.putFloat("totalEmissions", totalEmissions);
         editor.apply();
 
-        totalEmissionsTextView.setText("Total Carbon Emissions: " + totalEmissions + " kg");
-        averageEmissionsTextView.setText("Average Carbon Emissions/Day: " + averageEmissions + " kg");
     }
-
 }

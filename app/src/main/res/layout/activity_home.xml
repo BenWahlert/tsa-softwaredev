@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@color/white">
+    android:background="#4CAF50">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,59 +13,41 @@
         android:padding="24dp"
         android:gravity="center">
 
-        <!-- Total Carbon Emissions Display -->
-
-        <!-- Average Carbon Emissions per Day Display -->
-
-        <TextView
-            android:id="@+id/tv_total_emissions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:text="Total Carbon Emissions: 0 kg"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
         <!-- App Title -->
         <TextView
-            android:id="@+id/tv_average_emissions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:text="Average Carbon Emissions/Day: 0 kg"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Carbon Footprint Tracker"
-            android:textSize="22sp"
+            android:text="Carbon Footprint Calculator"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:paddingBottom="16dp"
-            android:textColor="@color/black" />
+            android:textColor="@android:color/white"
+            android:paddingBottom="24dp"/>
 
         <!-- Track Transportation Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_track_transportation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🚗 Track Transportation"
-            android:backgroundTint="@color/blue"
-            android:textColor="@color/white"
+            android:text="Track Transportation"
+            android:textSize="18sp"
+            app:cornerRadius="50dp"
+            android:backgroundTint="@android:color/white"
+            android:textColor="#4CAF50"
             android:padding="12dp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="16dp"/>
 
         <!-- Track Energy Usage Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_track_energy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="⚡ Track Energy Usage"
-            android:backgroundTint="@color/orange"
-            android:textColor="@color/white"
+            android:text="Track Energy Usage"
+            android:textSize="18sp"
+            app:cornerRadius="50dp"
+            android:backgroundTint="@android:color/white"
+            android:textColor="#4CAF50"
             android:padding="12dp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="16dp"/>
 
         <!-- Diet Type Selection -->
         <TextView
@@ -72,26 +55,28 @@
             android:layout_height="wrap_content"
             android:text="Select Your Diet Type:"
             android:textSize="18sp"
-            android:paddingBottom="8dp"
-            android:textColor="@color/black"/>
+            android:textColor="@android:color/white"
+            android:paddingBottom="8dp"/>
 
         <Spinner
             android:id="@+id/spinner_diet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:background="@android:drawable/editbox_background"/>
+            android:background="@android:drawable/editbox_background"
+            android:layout_marginBottom="16dp"/>
 
         <!-- Save Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save Preferences"
-            android:backgroundTint="@color/green"
-            android:textColor="@color/white"
-            android:padding="12dp"
-            android:layout_marginTop="16dp"/>
+            android:textSize="18sp"
+            app:cornerRadius="50dp"
+            android:backgroundTint="@android:color/white"
+            android:textColor="#4CAF50"
+            android:padding="12dp"/>
 
     </LinearLayout>
 </ScrollView>
