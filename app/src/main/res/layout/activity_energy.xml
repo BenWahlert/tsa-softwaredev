@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,11 +8,22 @@
     android:background="#4CAF50"
     android:padding="40dp">
 
+    <!-- Title Text for Energy Usage Tracker -->
+    <TextView
+        android:id="@+id/tv_energy_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Energy Usage Tracker"
+        android:textColor="#FFFFFF"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="24dp"
-        app:cardElevation="10dp"
         android:padding="32dp"
         android:backgroundTint="@android:color/white"
         android:layout_marginBottom="28dp">
@@ -23,16 +33,6 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_energy_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="Energy Usage Tracker"
-                android:textColor="#4CAF50"
-                android:textSize="22sp"
-                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_energy_type_label"

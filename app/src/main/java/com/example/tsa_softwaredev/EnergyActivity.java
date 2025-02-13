@@ -52,6 +52,7 @@ public class EnergyActivity extends AppCompatActivity {
             Toast.makeText(EnergyActivity.this,
                     "Energy Source: " + energySource + "\nEmissions Tracked: " + emissions + " kg CO₂",
                     Toast.LENGTH_LONG).show();
+            finish();
         });
 
         // Handle Cancel button click

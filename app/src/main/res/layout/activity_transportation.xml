@@ -9,11 +9,22 @@
     android:background="#4CAF50"
     android:padding="40dp">
 
+    <!-- Title Text for Transportation Tracker -->
+    <TextView
+        android:id="@+id/tv_transportation_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transportation Tracker"
+        android:textColor="#FFFFFF"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"/>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="24dp"
-        app:cardElevation="10dp"
         android:padding="32dp"
         android:backgroundTint="@android:color/white"
         android:layout_marginBottom="28dp">
@@ -23,16 +34,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
-
-            <TextView
-                android:id="@+id/tv_transportation_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Transportation Tracker"
-                android:textSize="22sp"
-                android:textColor="#4CAF50"
-                android:textStyle="bold"
-                android:layout_marginBottom="20dp"/>
 
             <TextView
                 android:id="@+id/tv_transport_mode_label"

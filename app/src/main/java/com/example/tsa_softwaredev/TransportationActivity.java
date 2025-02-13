@@ -53,6 +53,7 @@ public class TransportationActivity extends AppCompatActivity {
                 editor.apply();
 
                 Toast.makeText(TransportationActivity.this, "Emissions Tracked: " + emissions + " kg", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 

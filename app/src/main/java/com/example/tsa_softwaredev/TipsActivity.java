@@ -14,6 +14,30 @@ import java.util.Random;
 
 public class TipsActivity extends AppCompatActivity {
 
+    List<String> energyIntroMessages = Arrays.asList(
+            "Your energy usage is on the higher side.",
+            "You might want to consider reducing your energy consumption.",
+            "Your energy consumption could be optimized to reduce emissions."
+    );
+
+    List<String> dietIntroMessages = Arrays.asList(
+            "Your diet contributes a bit more to emissions.",
+            "Consider modifying your diet to lower your carbon footprint.",
+            "Your food choices are impacting the environment more than expected."
+    );
+
+    List<String> transportationIntroMessages = Arrays.asList(
+            "Your transportation footprint is significant.",
+            "Your transportation habits are contributing to your emissions.",
+            "You might want to consider greener transportation options."
+    );
+
+    List<String> generalIntroMessages = Arrays.asList(
+            "Your overall emissions could be lower.",
+            "Consider making small changes to reduce your carbon footprint.",
+            "You're contributing more to emissions than you'd like to."
+    );
+
     List<String> energyTips = Arrays.asList(
             "Unplug devices when they're not in use to avoid phantom energy drain.",
             "Switch to energy-efficient LED bulbs to save electricity.",
@@ -68,6 +92,7 @@ public class TipsActivity extends AppCompatActivity {
 
     private TextView tipOfTheDayTextView;
     private Button refreshButton;
+    private Button homeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +101,7 @@ public class TipsActivity extends AppCompatActivity {
 
         tipOfTheDayTextView = findViewById(R.id.tip_of_the_day_text_view);
         refreshButton = findViewById(R.id.refresh_button);
+        homeButton = findViewById(R.id.home_button);
 
         SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         float energyEmissions = prefs.getFloat("energyEmissions", 0);
@@ -91,6 +117,13 @@ public class TipsActivity extends AppCompatActivity {
                 displayTipOfTheDay(energyEmissions, dietEmissions, transportationEmissions, totalEmissions);
             }
         });
+
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void displayTipOfTheDay(float energy, float diet, float transportation, float total) {
@@ -102,18 +135,22 @@ public class TipsActivity extends AppCompatActivity {
         String tipMessage = "";
 
         if (energy > 10) {
-            tipMessage = "Your energy usage is on the higher side. " + getRandomTip(energyTips);
+            tipMessage = getRandomIntroMessage(energyIntroMessages) + " " + getRandomTip(energyTips);
         } else if (diet > 10) {
-            tipMessage = "Your diet contributes a bit more to emissions. " + getRandomTip(dietTips);
+            tipMessage = getRandomIntroMessage(dietIntroMessages) + " " + getRandomTip(dietTips);
         } else if (transportation > 10) {
-            tipMessage = "Your transportation footprint is significant. " + getRandomTip(transportationTips);
+            tipMessage = getRandomIntroMessage(transportationIntroMessages) + " " + getRandomTip(transportationTips);
         } else if (total > 30) {
-            tipMessage = "Your overall emissions could be lower. " + getRandomTip(generalTips);
+            tipMessage = getRandomIntroMessage(generalIntroMessages) + " " + getRandomTip(generalTips);
         } else {
             tipMessage = "You're doing great at reducing your carbon footprint! Keep up the good work.";
         }
 
         return tipMessage;
+    }
+
+    private String getRandomIntroMessage(List<String> introMessages) {
+        return introMessages.get(new Random().nextInt(introMessages.size()));
     }
 
     private String getRandomTip(List<String> tipList) {
