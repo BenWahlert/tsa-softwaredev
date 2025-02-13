@@ -25,6 +25,7 @@ public class TransportationActivity extends AppCompatActivity {
         EditText etDistance = findViewById(R.id.et_distance);
         RadioGroup rgTransportMode = findViewById(R.id.rg_transport_mode);
         Button btnStartTracking = findViewById(R.id.btn_start_tracking);
+        Button btnCancel = findViewById(R.id.btn_cancel); // Cancel button
 
         btnStartTracking.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +53,14 @@ public class TransportationActivity extends AppCompatActivity {
                 editor.apply();
 
                 Toast.makeText(TransportationActivity.this, "Emissions Tracked: " + emissions + " kg", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Handle Cancel button click
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Close the activity
             }
         });
     }

@@ -103,11 +103,26 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- Track Travel Emissions Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start_tracking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Track Travel Emissions"
+        android:textSize="18sp"
+        app:cornerRadius="50dp"
+        android:backgroundTint="@android:color/white"
+        android:textColor="#4CAF50"
+        android:padding="18dp"
+        android:elevation="10dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Cancel Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
         android:textSize="18sp"
         app:cornerRadius="50dp"
         android:backgroundTint="@android:color/white"

@@ -13,7 +13,6 @@
         android:padding="24dp"
         android:gravity="center">
 
-        
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,7 +22,7 @@
             android:textColor="@android:color/white"
             android:paddingBottom="24dp"/>
 
-        
+        <!-- Button to track transportation -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_track_transportation"
             android:layout_width="match_parent"
@@ -36,7 +35,7 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
-        
+        <!-- Button to track energy usage -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_track_energy"
             android:layout_width="match_parent"
@@ -49,34 +48,19 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
-        
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Your Diet Type:"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:paddingBottom="8dp"/>
-
-        <Spinner
-            android:id="@+id/spinner_diet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@android:drawable/editbox_background"
-            android:layout_marginBottom="16dp"/>
-
-        
+        <!-- Button to open the diet selection dialog -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_select_diet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save Preferences"
+            android:text="Select Diet Type"
             android:textSize="18sp"
             app:cornerRadius="50dp"
             android:backgroundTint="@android:color/white"
             android:textColor="#4CAF50"
-            android:padding="12dp"/>
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
 
     </LinearLayout>
 </ScrollView>
