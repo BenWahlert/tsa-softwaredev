@@ -12,7 +12,7 @@
         android:padding="24dp"
         android:gravity="center">
 
-        <!-- Welcome Message -->
+        
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:paddingBottom="32dp"
             android:textColor="@color/white" />
 
-        <!-- Get Started Button -->
+        
         <Button
             android:id="@+id/btn_continue"
             android:layout_width="wrap_content"

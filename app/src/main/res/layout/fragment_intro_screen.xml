@@ -7,7 +7,7 @@
     android:background="#4CAF50"
     android:padding="24dp">
 
-    <!-- Green background -->
+    
 
     <TextView
         android:id="@+id/introText"
@@ -20,6 +20,6 @@
         android:paddingBottom="32dp"
         android:layout_marginBottom="24dp" />
 
-    <!-- Large text, White text color -->
+    
 
 </LinearLayout>

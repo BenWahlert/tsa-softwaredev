@@ -1,42 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:gravity="center"
+    android:background="#4CAF50"
+    android:padding="40dp">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/tv_energy_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Energy Usage Tracker"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal" />
-
-    <!-- Spinner for selecting energy source -->
-    <Spinner
-        android:id="@+id/spinner_energy_source"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+        app:cardCornerRadius="24dp"
+        app:cardElevation="10dp"
+        android:padding="32dp"
+        android:backgroundTint="@android:color/white"
+        android:layout_marginBottom="28dp">
 
-    <!-- Input for energy usage (kWh for electricity, cubic meters for gas, etc.) -->
-    <EditText
-        android:id="@+id/et_energy_usage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter energy usage"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="16dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <!-- Button to save energy data -->
-    <Button
+            <TextView
+                android:id="@+id/tv_energy_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Energy Usage Tracker"
+                android:textColor="#4CAF50"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_energy_type_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Select Energy Type:"
+                android:textColor="#4CAF50"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rg_energy_source"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_coal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="6dp"
+                    android:text="Electricity (Coal)"
+                    android:textColor="#4CAF50" />
+
+                <RadioButton
+                    android:id="@+id/rb_solar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="6dp"
+                    android:text="Electricity (Solar)"
+                    android:textColor="#4CAF50" />
+
+                <RadioButton
+                    android:id="@+id/rb_gas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="6dp"
+                    android:text="Gas"
+                    android:textColor="#4CAF50" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_energy_usage_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:text="Enter Energy Usage (kWh):"
+                android:textColor="#4CAF50"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_energy_usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@null"
+                android:elevation="0dp"
+                android:hint="e.g., 10.5"
+                android:inputType="numberDecimal"
+                android:padding="14dp"
+                android:textColor="#212121"
+                android:textColorHint="#757575"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start_energy_tracking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Track Energy Emissions"
-        android:layout_marginTop="16dp"/>
+        android:textSize="18sp"
+        app:cornerRadius="50dp"
+        android:backgroundTint="@android:color/white"
+        android:textColor="#4CAF50"
+        android:padding="18dp"
+        android:elevation="10dp"/>
 </LinearLayout>

@@ -8,7 +8,7 @@
     android:background="#4CAF50"
     android:padding="24dp">
 
-    <!-- Emissions Card -->
+    
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!-- Open Tips Button -->
+    
     <com.google.android.material.button.MaterialButton
         android:id="@+id/tips_button"
         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
         android:textColor="#4CAF50"
         android:padding="12dp"/>
 
-    <!-- Open Calculator Button -->
+    
     <com.google.android.material.button.MaterialButton
         android:id="@+id/home_button"
         android:layout_width="match_parent"

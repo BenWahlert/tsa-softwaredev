@@ -1,53 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:gravity="center"
+    android:background="#4CAF50"
+    android:padding="40dp">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/tv_transportation_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Transportation Tracker"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal" />
-
-    <!-- Input for Distance Traveled -->
-    <EditText
-        android:id="@+id/et_distance"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter distance traveled (km)"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="16dp" />
+        app:cardCornerRadius="24dp"
+        app:cardElevation="10dp"
+        android:padding="32dp"
+        android:backgroundTint="@android:color/white"
+        android:layout_marginBottom="28dp">
 
-    <!-- Input for Mode of Transport -->
-    <Spinner
-        android:id="@+id/spinner_transport_mode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:entries="@array/transport_modes" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
 
-    <!-- Button to Start Tracking -->
-    <Button
+            <TextView
+                android:id="@+id/tv_transportation_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transportation Tracker"
+                android:textSize="22sp"
+                android:textColor="#4CAF50"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:id="@+id/tv_transport_mode_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Transportation Mode:"
+                android:textSize="18sp"
+                android:textColor="#4CAF50"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+
+            <RadioGroup
+                android:id="@+id/rg_transport_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="12dp">
+
+                <RadioButton
+                    android:id="@+id/rb_car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Car"
+                    android:textColor="#4CAF50"
+                    android:paddingVertical="6dp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_bus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bus"
+                    android:textColor="#4CAF50"
+                    android:paddingVertical="6dp"/>
+
+                <RadioButton
+                    android:id="@+id/rb_bike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bike"
+                    android:textColor="#4CAF50"
+                    android:paddingVertical="6dp"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_distance_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter Distance Traveled (km):"
+                android:textSize="18sp"
+                android:textColor="#4CAF50"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/et_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="e.g., 15.2"
+                android:inputType="numberDecimal"
+                android:padding="14dp"
+                android:background="@null"
+                android:textColor="#212121"
+                android:textColorHint="#757575"
+                android:textSize="16sp"
+                android:elevation="0dp"
+                android:layout_marginBottom="16dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start_tracking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Track Travel"
-        android:layout_marginTop="16dp" />
-
-    <!-- List of Tracked Trips -->
-    <ListView
-        android:id="@+id/lv_trips"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"
-        android:layout_marginTop="16dp" />
-
+        android:text="Track Travel Emissions"
+        android:textSize="18sp"
+        app:cornerRadius="50dp"
+        android:backgroundTint="@android:color/white"
+        android:textColor="#4CAF50"
+        android:padding="18dp"
+        android:elevation="10dp"/>
 </LinearLayout>

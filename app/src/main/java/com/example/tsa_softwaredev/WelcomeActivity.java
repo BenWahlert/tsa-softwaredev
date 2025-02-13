@@ -12,12 +12,10 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Check if the welcome screen has been shown before
         SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
 
         if (!isFirstRun) {
-            // If it's not the first run, go straight to the main activity
             startActivity(new Intent(this, MainActivity.class));
             finish();
             return;
@@ -25,12 +23,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_welcome);
 
-        // Mark that the welcome screen has been shown
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("isFirstRun", false);
         editor.apply();
 
-        // Button to proceed
         Button continueButton = findViewById(R.id.btn_continue);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override

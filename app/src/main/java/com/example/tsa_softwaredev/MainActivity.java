@@ -18,12 +18,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Find the button by its ID
         Button homeButton = findViewById(R.id.home_button);
         Button tipsButton = findViewById(R.id.tips_button);
         statsTextView = findViewById(R.id.tv_stats);
 
-        // Set an OnClickListener to handle button clicks
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,14 +36,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Update the displayed emissions
         updateEmissionsDisplay();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Update emissions when returning to MainActivity
         updateEmissionsDisplay();
     }
 
@@ -58,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateEmissionsDisplay() {
-        // Retrieve emissions from SharedPreferences and update the display
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         float totalEmissions = sharedPreferences.getFloat("totalEmissions", 0.0f);
         statsTextView.setText(totalEmissions + "");

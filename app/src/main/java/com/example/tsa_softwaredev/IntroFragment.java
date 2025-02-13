@@ -12,7 +12,6 @@ public class IntroFragment extends Fragment {
 
     private String text;
 
-    // Constructor to pass the text for the fragment
     public IntroFragment(String text) {
         this.text = text;
     }
@@ -20,10 +19,8 @@ public class IntroFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_intro_screen, container, false);
 
-        // Set the text on the TextView
         TextView textView = view.findViewById(R.id.introText);
         textView.setText(text);
 

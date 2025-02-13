@@ -17,7 +17,6 @@ public class IntroAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        // Return a different fragment depending on the position
         switch (position) {
             case 0:
                 return new IntroFragment("Screen 1: App Introduction");
@@ -32,7 +31,6 @@ public class IntroAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        // Total number of intro screens
         return 4;
     }
 }
