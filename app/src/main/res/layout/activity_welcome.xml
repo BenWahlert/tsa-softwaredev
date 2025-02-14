@@ -17,11 +17,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CarbonPal - Your personal tool for tracking and lowering your carbon impact."
+            android:text="Welcome to CarbonPal"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textAlignment="center"
             android:paddingBottom="32dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your revolutionary carbon tracker."
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:paddingBottom="25dp"
             android:textColor="@color/white" />
 
 

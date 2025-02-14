@@ -1,10 +1,10 @@
 package com.example.tsa_softwaredev;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -59,11 +59,15 @@ public class HomeActivity extends AppCompatActivity {
         addTransportationEmissions();
         addDietEmissions();
 
-        float averageEmissions = totalEmissions / daysTracked;
-
+        // Calculate and save emissions data
         SharedPreferences.Editor editor = prefs.edit();
         editor.putFloat("totalEmissions", totalEmissions);
-        editor.apply();
+    }
+
+    private void applyBackgroundColor(int color) {
+        // Change the background color of the HomeActivity
+        View rootView = findViewById(android.R.id.content);
+        rootView.setBackgroundColor(color);
     }
 
     private void addEnergyEmissions() {

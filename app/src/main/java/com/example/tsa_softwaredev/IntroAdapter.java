@@ -19,11 +19,11 @@ public class IntroAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new IntroFragment("Screen 1: App Introduction");
+                return new IntroFragment("Select Each Category");
             case 1:
-                return new IntroFragment("Screen 2: How to Use");
+                return new IntroFragment("Select the option that suits you best");
             case 2:
-                return new IntroFragment("Screen 3: Final Tips");
+                return new IntroFragment("Watch as your carbon emissions calculate");
             default:
                 return new EmptyFragment();
         }
