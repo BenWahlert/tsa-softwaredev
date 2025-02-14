@@ -22,7 +22,7 @@
             android:textColor="@android:color/white"
             android:paddingBottom="24dp"/>
 
-        <!-- Button to track transportation -->
+        
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_track_transportation"
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Button to track energy usage -->
+        
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_track_energy"
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Button to open the diet selection dialog -->
+        
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_select_diet"
             android:layout_width="match_parent"

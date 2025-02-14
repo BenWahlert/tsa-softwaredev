@@ -9,7 +9,7 @@
     android:background="#4CAF50"
     android:padding="40dp">
 
-    <!-- Title Text for Transportation Tracker -->
+    
     <TextView
         android:id="@+id/tv_transportation_title"
         android:layout_width="wrap_content"
@@ -104,7 +104,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Track Travel Emissions Button -->
+    
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start_tracking"
         android:layout_width="match_parent"
@@ -118,7 +118,7 @@
         android:elevation="10dp"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Cancel Button -->
+    
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_cancel"
         android:layout_width="match_parent"

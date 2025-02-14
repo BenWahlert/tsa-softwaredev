@@ -12,8 +12,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
 
-    private float totalEmissions = 0;  // In kg
-    private int daysTracked = 1;  // Assuming at least 1 day of tracking
+    private float totalEmissions = 0;  
+    private int daysTracked = 1;  
 
     private final float standardAmericanEmissions = 5.39775f;
     private final float mediterraneanEmissions = 2.17724f;
@@ -59,13 +59,13 @@ public class HomeActivity extends AppCompatActivity {
         addTransportationEmissions();
         addDietEmissions();
 
-        // Calculate and save emissions data
+        
         SharedPreferences.Editor editor = prefs.edit();
         editor.putFloat("totalEmissions", totalEmissions);
     }
 
     private void applyBackgroundColor(int color) {
-        // Change the background color of the HomeActivity
+        
         View rootView = findViewById(android.R.id.content);
         rootView.setBackgroundColor(color);
     }

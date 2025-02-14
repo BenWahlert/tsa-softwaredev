@@ -12,7 +12,7 @@
         android:padding="24dp"
         android:gravity="center">
 
-        <!-- Title Text -->
+        
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             android:textColor="@android:color/white"
             android:paddingBottom="16dp"/>
 
-        <!-- CardView for Radio Buttons with White Background -->
+        
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,14 +36,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- Radio Group for Diet Selection -->
+                
                 <RadioGroup
                     android:id="@+id/rg_diet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Radio Buttons with Descriptions -->
+                    
                     <RadioButton
                         android:id="@+id/rb_standard_american"
                         android:layout_width="wrap_content"
@@ -143,7 +143,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Save Button -->
+        
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save"
             android:layout_width="match_parent"
@@ -156,7 +156,7 @@
             app:cornerRadius="50dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Cancel Button -->
+        
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_cancel"
             android:layout_width="match_parent"

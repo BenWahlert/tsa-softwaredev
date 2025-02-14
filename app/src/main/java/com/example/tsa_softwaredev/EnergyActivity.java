@@ -26,7 +26,7 @@ public class EnergyActivity extends AppCompatActivity {
         EditText etEnergyUsage = findViewById(R.id.et_energy_usage);
         RadioGroup rgEnergySource = findViewById(R.id.rg_energy_source);
         MaterialButton btnStartEnergyTracking = findViewById(R.id.btn_start_energy_tracking);
-        MaterialButton btnCancel = findViewById(R.id.btn_cancel); // Cancel button
+        MaterialButton btnCancel = findViewById(R.id.btn_cancel); 
 
         btnStartEnergyTracking.setOnClickListener(v -> {
             int selectedId = rgEnergySource.getCheckedRadioButtonId();
@@ -55,8 +55,8 @@ public class EnergyActivity extends AppCompatActivity {
             finish();
         });
 
-        // Handle Cancel button click
-        btnCancel.setOnClickListener(v -> finish()); // Close the activity when cancel is clicked
+        
+        btnCancel.setOnClickListener(v -> finish()); 
     }
 
     private float calculateEnergyEmissions(String energySource, float energyUsage) {

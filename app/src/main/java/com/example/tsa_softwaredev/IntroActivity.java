@@ -28,7 +28,7 @@ public class IntroActivity extends AppCompatActivity {
                 if (position == introAdapter.getItemCount()-1) {
                     Intent intent = new Intent(IntroActivity.this, MainActivity.class);
                     startActivity(intent);
-                    finish(); // Finish the IntroActivity so it's removed from the stack
+                    finish(); 
                 }
             }
         });
